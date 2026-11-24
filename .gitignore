@@ -1,0 +1,9 @@
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.mmi
+*.mjmmi
+*.jvmmi
+.mmi-converter-*/

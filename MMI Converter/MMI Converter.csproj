@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MmiConverter</RootNamespace>
+    <AssemblyName>MMI Converter</AssemblyName>
+    <ApplicationIcon>Assets\MmiConverter.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>obj\Release\</OutputPath>
+    <PublishDir>$(MSBuildProjectDirectory)\bin\Release\</PublishDir>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="Assets\MmiConverter.ico" />
+    <EmbeddedResource Include="Native\encoder.exe" LogicalName="Native.encoder.exe" />
+    <EmbeddedResource Include="Native\ffmpeg.exe" LogicalName="Native.ffmpeg.exe" />
+    <EmbeddedResource Include="..\LICENSE" LogicalName="ThirdParty.Application-LICENSE.txt" />
+    <EmbeddedResource Include="ThirdParty\Notices.txt" LogicalName="ThirdParty.Notices.txt" />
+    <EmbeddedResource Include="ThirdParty\FFmpeg-LICENSE.txt" LogicalName="ThirdParty.FFmpeg-LICENSE.txt" />
+    <EmbeddedResource Include="ThirdParty\FFmpeg-COPYING.LGPLv2.1" LogicalName="ThirdParty.FFmpeg-LGPL.txt" />
+    <EmbeddedResource Include="ThirdParty\FFmpeg-COPYING.LGPLv3" LogicalName="ThirdParty.FFmpeg-LGPLv3.txt" />
+    <EmbeddedResource Include="ThirdParty\libjpeg-turbo-LICENSE.md" LogicalName="ThirdParty.Jpeg-LICENSE.txt" />
+    <EmbeddedResource Include="ThirdParty\libjpeg-turbo-README.ijg" LogicalName="ThirdParty.Jpeg-IJG.txt" />
+    <EmbeddedResource Include="ThirdParty\FFmpeg-source.zip" LogicalName="ThirdParty.FFmpeg-source.zip" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <UpToDateCheckBuilt Include="$(PublishDir)$(AssemblyName).exe" />
+  </ItemGroup>
+  <Target Name="BundleReleaseOutput" AfterTargets="Build"
+          Condition="'$(Configuration)' == 'Release' and '$(DesignTimeBuild)' != 'true'"
+          DependsOnTargets="PrepareForPublish;ComputeAndCopyFilesToPublishDirectory">
+    <Message Importance="High" Text="$(MSBuildProjectName) -> $(PublishedSingleFilePath)" />
+  </Target>
+  <Target Name="CleanReleaseOutput" AfterTargets="Clean" Condition="'$(Configuration)' == 'Release'">
+    <Delete Files="$(PublishDir)$(AssemblyName).exe" />
+  </Target>
+</Project>

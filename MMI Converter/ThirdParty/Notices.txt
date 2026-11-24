@@ -1,0 +1,55 @@
+Third-party software
+
+FFmpeg 9.1
+Copyright (c) 2000–2026 the FFmpeg developers.
+Licensed under the GNU Lesser General Public License, version 2.1 or later.
+FFmpeg is a trademark of Fabrice Bellard.
+
+This converter uses a separately compiled FFmpeg command-line program
+to decode samples of each converted disc during verification. The
+program is bundled as a resource and launched as a separate process.
+The build enables the MJPEG decoder and omits GPL and nonfree options.
+
+Save FFmpeg Source exports the complete corresponding release source
+with the exact build command and upstream release signature.
+Upstream project: https://ffmpeg.org/
+Licensing: https://ffmpeg.org/legal.html
+Source: https://ffmpeg.org/releases/ffmpeg-9.1.tar.xz
+
+libjpeg-turbo 3.2.1
+The native encoder uses libjpeg-turbo to keep quality settings
+consistent with the tested ares discs. The applicable IJG, BSD-style,
+and zlib license notices are reproduced below.
+Upstream: https://libjpeg-turbo.org/
+
+MMI and QON utilities
+The encoder uses MIT-licensed ZIP64, QON, QOI2 and LaserDisc VBI
+utilities from MukiEX's mmidsc, revision 1d812165429f7914c734f17ce4e3c947e668225a.
+Local changes add Unicode filenames and Motion JPEG conversion.
+QON and QOI2 are by Roger Sanders and Dominic Szablewski.
+Please see the license and copyright headers in the solution's Native folder.
+https://github.com/MukiEX/MegaCD_MiSTer/tree/1d812165429f7914c734f17ce4e3c947e668225a/tools/mmidsc/src
+
+MIT License
+
+Copyright (c) 2025 Roger Sanders
+Copyright (c) 2021 Dominic Szablewski
+Copyright (c) MukiEX and mmidsc contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
