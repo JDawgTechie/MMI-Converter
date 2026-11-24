@@ -40,7 +40,7 @@ namespace MmiConverter
             public void Attach()
             {
                 window.SourceInitialized += WindowSourceInitialized;
-                window.SizeChanged += WindowSizeOrStateChanged;
+                frame.SizeChanged += WindowSizeOrStateChanged;
                 window.StateChanged += WindowSizeOrStateChanged;
                 window.Closed += WindowClosed;
                 window.Dispatcher.BeginInvoke(new Action(UpdateFrame));
@@ -48,6 +48,7 @@ namespace MmiConverter
 
             private void WindowSourceInitialized(object sender, EventArgs e)
             {
+                if (window.ResizeMode == ResizeMode.NoResize || window.ResizeMode == ResizeMode.CanMinimize) return;
                 source = HwndSource.FromHwnd(new WindowInteropHelper(window).Handle);
                 if (source != null) source.AddHook(WindowMessageHook);
             }
@@ -103,7 +104,7 @@ namespace MmiConverter
                 }
 
                 window.SourceInitialized -= WindowSourceInitialized;
-                window.SizeChanged -= WindowSizeOrStateChanged;
+                frame.SizeChanged -= WindowSizeOrStateChanged;
                 window.StateChanged -= WindowSizeOrStateChanged;
                 window.Closed -= WindowClosed;
             }

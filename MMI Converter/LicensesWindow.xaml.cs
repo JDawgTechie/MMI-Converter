@@ -11,6 +11,7 @@ public partial class LicensesWindow : Window
     public LicensesWindow()
     {
         InitializeComponent();
+        WindowChromeService.Attach(this, WindowFrame);
         SourceInitialized += (_, _) => ThemeService.ApplyWindowChrome(this);
         string[] texts = ["Application-LICENSE.txt", "Notices.txt", "FFmpeg-LICENSE.txt", "FFmpeg-LGPL.txt", "FFmpeg-LGPLv3.txt", "Jpeg-LICENSE.txt", "Jpeg-IJG.txt"];
         LicenseText.Text = string.Join(Environment.NewLine + Environment.NewLine, texts.Select(ReadText));
@@ -21,6 +22,8 @@ public partial class LicensesWindow : Window
         using var reader = new StreamReader(NativeTools.Resource("ThirdParty." + name));
         return reader.ReadToEnd();
     }
+
+    private void OnClose(object sender, RoutedEventArgs e) => SystemCommands.CloseWindow(this);
 
     private async void OnSaveSource(object sender, RoutedEventArgs e)
     {
