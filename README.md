@@ -1,4 +1,4 @@
-![GitHub Release Downloads](https://img.shields.io/github/downloads/JDawgTechie/MMI-Converter/total?color=a855f7)
+![GitHub Release Downloads](https://img.shields.io/github/downloads/JDawgTechie/MMI-Converter/total?color=a855f7&labelColor=1e293b)
 
 # MMI Converter
 
