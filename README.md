@@ -1,3 +1,5 @@
+![GitHub Release Downloads](https://img.shields.io/github/downloads/JDawgTechie/MMI-Converter/total?color=a855f7)
+
 # MMI Converter
 
 MMI Converter is a Windows utility for converting original LaserActive `.mmi` disc images to smaller Motion JPEG `.mjmmi` playback images for the Sega Mega-LD and NEC LD-ROM² PACs.
